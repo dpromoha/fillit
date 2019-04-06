@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/06 09:14:41 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/04/06 09:17:54 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		need_elem(char **block)
@@ -20,7 +32,7 @@ int		need_elem(char **block)
 int		touch_elem(char **tetrx)
 {
 	t_struct	a;
-	int 		touch;
+	int			touch;
 
 	touch = 0;
 	init_t_struct(&a);
@@ -52,7 +64,7 @@ int		count_symb(char **tetrx)
 	a.dot = 0;
 	init_t_struct(&a);
 	while (tetrx[a.i])
-    {
+	{
 		a.j = 0;
 		while (tetrx[a.i][a.j])
 		{
@@ -61,7 +73,7 @@ int		count_symb(char **tetrx)
 			else if (tetrx[a.i][a.j] == '.')
 				a.dot++;
 			else
-			    return (-1);
+				return (-1);
 			a.j++;
 		}
 		a.i++;
@@ -72,26 +84,26 @@ int		count_symb(char **tetrx)
 		return (-1);
 }
 
-int     columns(char **tetrx, int i, int j)
+int		columns(char **tetrx, int i, int j)
 {
-    int count;
+	int		count;
 
-    count = 0;
-    if (MAX_SIZE(i + 1) && HASH(tetrx[i + 1][j]))
-        count++;
-    if (i - 1 >= 0 && HASH(tetrx[i - 1][j]))
-        count++;
-    return (count);
+	count = 0;
+	if (MAX_SIZE(i + 1) && HASH(tetrx[i + 1][j]))
+		count++;
+	if (i - 1 >= 0 && HASH(tetrx[i - 1][j]))
+		count++;
+	return (count);
 }
 
-int     rows(char **tetrx, int i, int j)
+int		rows(char **tetrx, int i, int j)
 {
-    int count;
+	int		count;
 
-    count = 0;
-    if (MAX_SIZE(j + 1) && HASH(tetrx[i][j + 1]))
-        count++;
-    if (j - 1 >= 0 && HASH(tetrx[i][j - 1]))
-        count++;
-    return (count);
+	count = 0;
+	if (MAX_SIZE(j + 1) && HASH(tetrx[i][j + 1]))
+		count++;
+	if (j - 1 >= 0 && HASH(tetrx[i][j - 1]))
+		count++;
+	return (count);
 }

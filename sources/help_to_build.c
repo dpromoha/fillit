@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_to_build.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/06 09:18:22 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/04/06 09:19:48 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 char	**new_block(char **tetrx, int size)
@@ -23,7 +35,7 @@ char	**new_block(char **tetrx, int size)
 	return (new_tetrx);
 }
 
-void		put_dots_on_need_place(t_ttr *tet_lst, char **tetrx, int i, int j)
+void	put_dots_on_need_place(t_ttr *tet_lst, char **tetrx, int i, int j)
 {
 	i = 0;
 	while ((tet_lst->model)[i])
@@ -52,8 +64,8 @@ int		setting_tetrx(char **tetrx, t_ttr *tet_lst, int i, int j)
 		a.j = 0;
 		while ((tet_lst->model)[a.i][a.j] && tetrx[i + a.i][j + a.j])
 		{
-			HASH((tet_lst->model)[a.i][a.j]) ? tetrx[i + a.i][j + a.j]
-			= tet_lst->mark : 0;
+			HASH((tet_lst->model)[a.i][a.j]) ? tetrx[i + a.i][j + a.j] =
+				tet_lst->mark : 0;
 			a.j++;
 		}
 		a.i++;

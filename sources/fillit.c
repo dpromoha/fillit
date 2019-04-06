@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fillit.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/05 07:31:30 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/04/05 07:34:20 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-int			read_file(char *input, int fd)
+int		read_file(char *input, int fd)
 {
 	char		new_tetrx[21];
 	char		**tetrx;
@@ -28,14 +40,6 @@ int			read_file(char *input, int fd)
 	return (a.i);
 }
 
-void	init_t_struct(t_struct *a)
-{
-	a->i = 0;
-	a->j = 0;
-	a->diez = 0;
-	a->dot = 0;
-}
-
 int		validation(char **tetrx)
 {
 	if ((need_elem(tetrx) < 0) || (count_symb(tetrx) < 0))
@@ -44,7 +48,7 @@ int		validation(char **tetrx)
 		return (0);
 }
 
-int			fillit(char **tetrx, t_ttr *tet_lst)
+int		fillit(char **tetrx, t_ttr *tet_lst)
 {
 	t_struct	a;
 
@@ -90,6 +94,5 @@ int		main(int ac, char **av)
 	}
 	else
 		put_usage();
-	// system("leaks fillit");
 	return (1);
 }

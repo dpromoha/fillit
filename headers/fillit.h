@@ -31,6 +31,7 @@ typedef struct		s_struct
 
 void			init_t_struct(t_struct *a);
 void			put_error(void);
+void			to_letters(t_ttr *tet_lst, char **new_block, int i);
 char			**dots(char **new_tetrx, int i, int j, int size);
 int     		count_symb(char **tetrx);
 int				need_elem(char **block);

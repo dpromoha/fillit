@@ -1,40 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tetrx.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/06 09:10:14 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/04/06 09:13:46 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-int      count_where_to_set(int size, int count)
+int		count_where_to_set(int size, int count)
 {
 	if (count == 0)
 		return (1);
-    size = size * 4;
-    while (count * count != size)
-    {
-        if (size < count * count)
-        {
-      		size++;
+	size = size * 4;
+	while (count * count != size)
+	{
+		if (size < count * count)
+		{
+			size++;
 			count = 1;
-        }
-        count++;
-    }
-    return (count);
+		}
+		count++;
+	}
+	return (count);
 }
 
-char    **try_to_set(t_ttr *tet_lst, int size)
+char	**try_to_set(t_ttr *tet_lst, int size)
 {
-    char    	**tetrx;
-	int			count;
+	char	**tetrx;
+	int		count;
 
 	tetrx = NULL;
 	count = 2;
-    tetrx = new_block(tetrx, count_where_to_set(size, count));
-    while (!fillit(tetrx, tet_lst))
+	tetrx = new_block(tetrx, count_where_to_set(size, count));
+	while (!fillit(tetrx, tet_lst))
 	{
 		count = 2;
 		free_tetr_arr(tetrx);
-    	tetrx = new_block(tetrx, count_where_to_set(size++, count));
+		tetrx = new_block(tetrx, count_where_to_set(size++, count));
 	}
-    return (tetrx);
+	return (tetrx);
 }
 
-static void		to_letters(t_ttr *tet_lst, char **new_block, int i)
+void	to_letters(t_ttr *tet_lst, char **new_block, int i)
 {
 	static char	**tetrx = NULL;
 	int			count;
@@ -46,7 +58,7 @@ static void		to_letters(t_ttr *tet_lst, char **new_block, int i)
 	free_tetr_arr(new_block);
 }
 
-void			try_to_set_valid(t_ttr *tet_lst, char *input, int fd)
+void	try_to_set_valid(t_ttr *tet_lst, char *input, int fd)
 {
 	t_struct	a;
 	char		**tetrx;

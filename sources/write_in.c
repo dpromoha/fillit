@@ -6,14 +6,14 @@
 /*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 09:01:19 by dpromoha          #+#    #+#             */
-/*   Updated: 2019/04/06 09:02:22 by dpromoha         ###   ########.fr       */
+/*   Updated: 2019/04/06 09:23:50 by dpromoha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static	int	x = -1;
-static	int	y = -1;
+static int		x = -1;
+static int		y = -1;
 
 int		valid_final_tetrx(int i, int j, char **tetrx, t_ttr *tet_lst)
 {
@@ -46,7 +46,7 @@ int		valid_final_tetrx(int i, int j, char **tetrx, t_ttr *tet_lst)
 int		length_columns(char **tetrx, int i)
 {
 	t_struct	a;
-	int 		count;
+	int			count;
 
 	i = 0;
 	a.j = 0;
@@ -96,7 +96,7 @@ int		length_rows(char **tetrx, int i)
 	return (count);
 }
 
-char		**mem_for_new_array(char **new_tetrx, int size)
+char	**mem_for_new_array(char **new_tetrx, int size)
 {
 	if (!(new_tetrx = (char**)malloc(sizeof(char*) * (size + 1))))
 		free_tetr_arr(new_tetrx);
@@ -105,7 +105,7 @@ char		**mem_for_new_array(char **new_tetrx, int size)
 	return (new_tetrx);
 }
 
-char		**diez_cut_tetrx(char **tetrx, char **new_tetrx, int count)
+char	**diez_cut_tetrx(char **tetrx, char **new_tetrx, int count)
 {
 	t_struct	a;
 	int			size_c;
