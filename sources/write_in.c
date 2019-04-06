@@ -12,8 +12,8 @@
 
 #include "fillit.h"
 
-static int		x = -1;
-static int		y = -1;
+static int	x = -1;
+static int	y = -1;
 
 int		valid_final_tetrx(int i, int j, char **tetrx, t_ttr *tet_lst)
 {
@@ -113,8 +113,8 @@ char	**diez_cut_tetrx(char **tetrx, char **new_tetrx, int count)
 
 	a.i = 0;
 	init_t_struct(&a);
-	M_1(y);
-	M_1(x);
+	START(y);
+	START(x);
 	size_c = length_columns(tetrx, count);
 	size_r = length_rows(tetrx, count);
 	new_tetrx = mem_for_new_array(tetrx, size_c);
@@ -124,7 +124,7 @@ char	**diez_cut_tetrx(char **tetrx, char **new_tetrx, int count)
 		new_tetrx[a.i] = ft_strnew(size_r);
 		while (length_rows(tetrx, count) > a.j)
 			new_tetrx[a.i][a.j++] = tetrx[x][y++];
-		M_1(y);
+		START(y);
 		a.i++;
 		x++;
 	}

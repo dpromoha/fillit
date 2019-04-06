@@ -53,8 +53,8 @@ void	to_letters(t_ttr *tet_lst, char **new_block, int i)
 
 	count = 0;
 	(tet_lst + i)->model = diez_cut_tetrx(new_block, tetrx, count);
-	if (!M_1((tet_lst + i)->i))
-		M_1((tet_lst + i)->i);
+	if (!START((tet_lst + i)->i))
+		START((tet_lst + i)->i);
 	free_tetr_arr(new_block);
 }
 

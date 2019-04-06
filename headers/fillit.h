@@ -23,7 +23,7 @@
 # define DOTS(a) (a == '.')
 # define HASH(a) (a == '#')
 # define MIN(a) (a == -1)
-# define M_1(a) (a = -1)
+# define START(a) (a = -1)
 
 typedef struct	s_ttr
 {

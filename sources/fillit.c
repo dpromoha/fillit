@@ -60,8 +60,8 @@ int		fillit(char **tetrx, t_ttr *tet_lst)
 			a.i++;
 		else
 		{
-			M_1((tet_lst + a.i)->i);
-			M_1((tet_lst + a.i--)->j);
+			START((tet_lst + a.i)->i);
+			START((tet_lst + a.i--)->j);
 			if (MIN(a.i) || MIN(a.j))
 				return (0);
 			else
@@ -69,6 +69,14 @@ int		fillit(char **tetrx, t_ttr *tet_lst)
 		}
 	}
 	return (1);
+}
+
+void	init_t_struct(t_struct *a)
+{
+	a->i = 0;
+	a->j = 0;
+	a->diez = 0;
+	a->dot = 0;
 }
 
 int		main(int ac, char **av)
