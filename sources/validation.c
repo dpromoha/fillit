@@ -56,9 +56,9 @@ int		count_symb(char **tetrx)
 		a.j = 0;
 		while (tetrx[a.i][a.j])
 		{
-			if HASH(tetrx[a.i][a.j])
+			if (tetrx[a.i][a.j] == '#')
 				a.diez++;
-			else if DOTS(tetrx[a.i][a.j])
+			else if (tetrx[a.i][a.j] == '.')
 				a.dot++;
 			else
 			    return (-1);

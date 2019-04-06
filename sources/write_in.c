@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_in.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/06 09:01:19 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/04/06 09:02:22 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-static int number_i = -1;
-static int number_j = -1;
+static	int	x = -1;
+static	int	y = -1;
 
 int		valid_final_tetrx(int i, int j, char **tetrx, t_ttr *tet_lst)
 {
@@ -17,8 +29,8 @@ int		valid_final_tetrx(int i, int j, char **tetrx, t_ttr *tet_lst)
 			a.j = 0;
 			while ((tet_lst->model)[a.i][a.j] && tetrx[i + a.i][j + a.j])
 			{
-				if ((tet_lst->model)[a.i][a.j] != '.' &&
-					tetrx[i + a.i][j + a.j] != '.')
+				if (!DOTS((tet_lst->model)[a.i][a.j]) &&
+					!DOTS(tetrx[i + a.i][j + a.j]))
 					return (0);
 				else
 					HASH((tet_lst->model)[a.i][a.j++]) ? a.diez++ : 0;
@@ -45,9 +57,9 @@ int		length_columns(char **tetrx, int i)
 		a.j = 0;
 		while (tetrx[i][a.j] && MAX_SIZE(a.j))
 		{
-			if HASH(tetrx[i][a.j])
+			if (tetrx[i][a.j] == '#')
 			{
-				MIN(number_i) ? number_i = i : 0;
+				MIN(x) ? x = i : 0;
 				count++;
 				break ;
 			}
@@ -61,7 +73,7 @@ int		length_columns(char **tetrx, int i)
 int		length_rows(char **tetrx, int i)
 {
 	t_struct	a;
-	int 		count;
+	int			count;
 
 	a.j = 0;
 	init_t_struct(&a);
@@ -71,9 +83,9 @@ int		length_rows(char **tetrx, int i)
 		i = 0;
 		while (tetrx[i] && MAX_SIZE(i))
 		{
-			if HASH(tetrx[i][a.j])
+			if (tetrx[i][a.j] == '#')
 			{
-				MIN(number_j) ? number_j = a.j : 0;
+				MIN(y) ? y = a.j : 0;
 				count++;
 				break ;
 			}
@@ -84,7 +96,7 @@ int		length_rows(char **tetrx, int i)
 	return (count);
 }
 
-char	**mem_for_new_array(char **new_tetrx, int size)
+char		**mem_for_new_array(char **new_tetrx, int size)
 {
 	if (!(new_tetrx = (char**)malloc(sizeof(char*) * (size + 1))))
 		free_tetr_arr(new_tetrx);
@@ -101,8 +113,8 @@ char		**diez_cut_tetrx(char **tetrx, char **new_tetrx, int count)
 
 	a.i = 0;
 	init_t_struct(&a);
-	M_1(number_j);
-	M_1(number_i);
+	M_1(y);
+	M_1(x);
 	size_c = length_columns(tetrx, count);
 	size_r = length_rows(tetrx, count);
 	new_tetrx = mem_for_new_array(tetrx, size_c);
@@ -111,10 +123,10 @@ char		**diez_cut_tetrx(char **tetrx, char **new_tetrx, int count)
 		a.j = 0;
 		new_tetrx[a.i] = ft_strnew(size_r);
 		while (length_rows(tetrx, count) > a.j)
-			new_tetrx[a.i][a.j++] = tetrx[number_i][number_j++];
-		M_1(number_j);
+			new_tetrx[a.i][a.j++] = tetrx[x][y++];
+		M_1(y);
 		a.i++;
-		number_i++;
+		x++;
 	}
 	return (new_tetrx);
 }
