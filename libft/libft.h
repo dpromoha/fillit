@@ -77,7 +77,7 @@ int					ft_isdigit(int ch);
 int					ft_isprint(int c);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
-int 				get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 
 typedef struct		s_list
 {

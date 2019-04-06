@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fillit.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/06 09:25:15 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/04/06 09:30:14 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FILLIT_H
 # define FILLIT_H
 
@@ -15,25 +27,25 @@
 
 typedef struct	s_ttr
 {
-	char	**model;
-	char	mark;
-	int		i;
-	int		j;
+	char		**model;
+	char		mark;
+	int			i;
+	int			j;
 }				t_ttr;
 
-typedef struct		s_struct
+typedef struct	s_struct
 {
-    int             i;
-    int             j;
-	int             diez;
-	int             dot;
-}					t_struct;
+	int			i;
+	int			j;
+	int			diez;
+	int			dot;
+}				t_struct;
 
 void			init_t_struct(t_struct *a);
 void			put_error(void);
 void			to_letters(t_ttr *tet_lst, char **new_block, int i);
 char			**dots(char **new_tetrx, int i, int j, int size);
-int     		count_symb(char **tetrx);
+int				count_symb(char **tetrx);
 int				need_elem(char **block);
 int				touch_elem(char **tetrx);
 void			put_usage(void);
@@ -41,10 +53,10 @@ int				validation(char **tetrx);
 void			print_tetrx(char **tetrx);
 int				columns(char **tetrx, int i, int j);
 int				rows(char **tetrx, int i, int j);
-void			free_tetri(t_ttr **);
+void			free_tetri(t_ttr **tet_lst);
 char			**diez_cut_tetrx(char **tetrx, char **new_tetrx, int count);
 char			**new_block(char **tetrx, int size);
-int    			count_where_to_set(int size, int count);
+int				count_where_to_set(int size, int count);
 int				setting_tetrx(char **tetrx, t_ttr *tetrimino, int i, int j);
 void			free_tetr_arr(char **tetrx);
 int				read_file(char *input, int fd);
@@ -52,13 +64,14 @@ char			**mem_for_new_array(char **new_tetrx, int size);
 int				valid_final_tetrx(int i, int j, char **tetrx, t_ttr *tetrimino);
 int				set_tetrx(char **tetrx, t_ttr *tetrimino, int i, int j);
 int				length_columns(char **tetrx, int i);
-char    		**try_to_set(t_ttr *, int size);
+char			**try_to_set(t_ttr *tet_lst, int size);
 int				length_rows(char **tetrx, int i);
 char			**help_mem(char **tetrx, char **new_tetrx);
-void			put_dots_on_need_place(t_ttr *tetrimino, char **tetrx, int i, int j);
-void			try_to_set_valid(t_ttr *, char *filename, int fd);
+void			put_dots_on_need_place(t_ttr *tetrimino, char **tetrx,
+				int i, int j);
+void			try_to_set_valid(t_ttr *tet_lst, char *filename, int fd);
 int				cross_tetrx(char **tetrx, t_ttr *tetrimino);
-char			**set_tetriminos(t_ttr *, int tetri_size);
-int				fillit(char **tetrx, t_ttr *);
+char			**set_tetriminos(t_ttr *tet_lst, int tetri_size);
+int				fillit(char **tetrx, t_ttr *tet_lst);
 
 #endif
